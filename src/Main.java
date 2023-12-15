@@ -1,32 +1,38 @@
+
 import java.util.Scanner;
-
 public class Main {
-    public static void main(String[] args) {
-        int n, num , min = 0, max = 0, total = 0;
+    public static void main(String[] args){
+        //New scanner created.
+        Scanner x=new Scanner(System.in);
 
-        Scanner inp = new Scanner(System.in);
+        //Variables defined.
+        int n;
+        int num;
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
 
-        System.out.print("How many numbers you will enter: ");
-        n = inp.nextInt();
-        for (int i = 1; i <= n; i++){
+        //Data retrieved from user.
+        System.out.print("How many numbers will be entered : ");
+        n=x.nextInt();
 
-            System.out.println("Enter a number");
-            num = inp.nextInt();
+        //Min and max calculated here.
+        for(int i=1;i<=n;i++) {
+            System.out.print(i + ". Enter Number : ");
+            num = x.nextInt();
+            if(num>max) {
 
-            total = total + num;
-
-            if (i == 1){
-                min = num;
-                max = num;
+                max=num;
+                if (i==1){
+                    min=num;
+                }else if (num < min){
+                    min=num;
+                }
             }
-        if (max < num){
-            max = num;
-        }if (min > num){
-            min = num;
-            }
+
         }
-        System.out.println("Biggest number: " + max);
-        System.out.println("Smallest number: " + min);
-        System.out.println("Total: " + total);
+
+        //Results printed.
+        System.out.println("The greatest value is : "+max);
+        System.out.println("The smallest value is: "+min);
     }
 }
